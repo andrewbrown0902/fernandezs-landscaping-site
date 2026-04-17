@@ -1,0 +1,421 @@
+---
+const services = [
+  'Lawn mowing & edging',
+  'Bush trimming & mulch',
+  'Tree branch cutting',
+  'Weed, dirt & rock removal',
+  'Tree or garden planting',
+  'Seasonal cleanup',
+  "Something else — I'll explain",
+];
+---
+<div class="qm" id="quote-modal" aria-hidden="true">
+  <div class="qm-backdrop" data-qm-close></div>
+
+  <div class="qm-panel" role="dialog" aria-modal="true" aria-labelledby="qm-title">
+    <button class="qm-close" type="button" aria-label="Close" data-qm-close>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <div class="qm-promo">
+      <span class="qm-promo-deal"><strong>10% Off</strong> Your First Service</span>
+      <span class="qm-promo-tag">Spring / Summer 2026</span>
+    </div>
+
+    <div class="qm-head">
+      <div class="qm-stars">
+        <span class="qm-stars-glyph" aria-hidden="true">★★★★★</span>
+        <span class="qm-stars-text">100% Customer Satisfaction</span>
+      </div>
+      <h2 id="qm-title">Get Your Free Quote</h2>
+      <p class="qm-sub">Same-day response · Free estimate · No pressure.</p>
+    </div>
+
+    <form class="qm-form" onsubmit="event.preventDefault(); this.closest('.qm-panel').querySelector('.qm-success').classList.add('show'); this.classList.add('hidden'); this.closest('.qm-panel').querySelector('.qm-head').classList.add('hidden'); this.closest('.qm-panel').querySelector('.qm-trust').classList.add('hidden');">
+      <div class="qm-row">
+        <label>
+          <span>Name</span>
+          <input type="text" name="name" placeholder="First &amp; last" required />
+        </label>
+        <label>
+          <span>Phone</span>
+          <input type="tel" name="phone" placeholder="(574) 123-4567" required />
+        </label>
+      </div>
+      <div class="qm-row">
+        <label>
+          <span>Address or Zip</span>
+          <input type="text" name="address" placeholder="e.g. 46628" required />
+        </label>
+        <label>
+          <span>Service</span>
+          <select name="service" required>
+            <option value="">Select…</option>
+            {services.map(s => <option value={s}>{s}</option>)}
+          </select>
+        </label>
+      </div>
+      <label class="qm-full">
+        <span>Notes (optional)</span>
+        <textarea name="notes" rows="2" placeholder="Lot size, access, anything we should know"></textarea>
+      </label>
+      <button type="submit" class="qm-submit">
+        Request Quote 💚
+      </button>
+    </form>
+
+    <div class="qm-trust">
+      <div class="qm-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Same-day response
+      </div>
+      <div class="qm-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Free haul-away
+      </div>
+      <div class="qm-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Honest pricing
+      </div>
+    </div>
+
+    <div class="qm-footer">
+      Prefer to talk? Call or text <a href="tel:5743862740">(574) 386-2740</a>
+    </div>
+
+    <div class="qm-success">
+      <div class="qm-success-icon">✓</div>
+      <h3>Quote request received.</h3>
+      <p>We'll reach out shortly to confirm details. Your <strong>10% off</strong> promo is locked in.</p>
+      <p class="qm-success-hint">Can't wait? Call or text <a href="tel:5743862740">(574) 386-2740</a>.</p>
+      <button type="button" class="qm-done" data-qm-close>Close</button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const modal = document.getElementById('quote-modal');
+    if (!modal) return;
+
+    const open = () => {
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      // focus first input shortly after the transition starts
+      setTimeout(() => {
+        const f = modal.querySelector('input[name="name"]');
+        if (f) f.focus();
+      }, 200);
+    };
+    const close = () => {
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
+    // Attach to every trigger
+    document.querySelectorAll('[data-quote-open]').forEach((el) => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        open();
+      });
+    });
+
+    // Close triggers
+    modal.querySelectorAll('[data-qm-close]').forEach((el) => {
+      el.addEventListener('click', close);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') close();
+    });
+  })();
+</script>
+
+<style>
+  .qm {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.22s ease;
+  }
+  .qm[aria-hidden='false'] {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .qm-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 13, 13, 0.72);
+    backdrop-filter: blur(4px);
+  }
+  .qm-panel {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    background: var(--bone);
+    border: 1.5px solid var(--charcoal);
+    box-shadow: 10px 10px 0 var(--forest);
+    padding: 60px 36px 28px;
+    transform: translateY(18px);
+    transition: transform 0.25s ease;
+  }
+  .qm[aria-hidden='false'] .qm-panel {
+    transform: translateY(0);
+  }
+  .qm-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: 1.5px solid var(--charcoal);
+    color: var(--charcoal);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    border-radius: 0;
+  }
+  .qm-close:hover { background: var(--charcoal); color: var(--pop); }
+
+  /* Promo ribbon — elegant, not tech-y */
+  .qm-promo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 18px;
+    background: var(--pop);
+    color: var(--forest-dark);
+    margin-bottom: 24px;
+    border: 1.5px solid var(--forest-dark);
+  }
+  .qm-promo-deal {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--forest-dark);
+  }
+  .qm-promo-deal strong {
+    font-weight: 700;
+  }
+  .qm-promo-tag {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--forest-dark);
+    opacity: 0.7;
+    padding-left: 12px;
+    border-left: 1px solid rgba(18, 36, 27, 0.35);
+  }
+
+  /* Head */
+  .qm-head.hidden { display: none; }
+  .qm-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .qm-stars-glyph {
+    color: #EAB308;
+    font-size: 0.92rem;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+  .qm-stars-text {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gray);
+  }
+  #qm-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 4vw, 2.4rem);
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+  .qm-sub {
+    color: var(--gray);
+    font-size: 0.96rem;
+    margin-bottom: 24px;
+  }
+
+  /* Form */
+  .qm-form.hidden { display: none; }
+  .qm-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .qm-form label {
+    display: block;
+  }
+  .qm-form label span {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--forest);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+  .qm-form input,
+  .qm-form select,
+  .qm-form textarea {
+    width: 100%;
+    padding: 11px 13px;
+    font-family: var(--font-sans);
+    font-size: 0.96rem;
+    color: var(--charcoal);
+    background: var(--white);
+    border: 1.5px solid var(--charcoal);
+    border-radius: 0;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .qm-form input:focus,
+  .qm-form select:focus,
+  .qm-form textarea:focus {
+    outline: none;
+    border-color: var(--pop);
+    box-shadow: 0 0 0 3px rgba(28, 189, 82, 0.22);
+  }
+  .qm-form textarea { resize: vertical; min-height: 60px; }
+  .qm-full { margin-bottom: 18px; }
+
+  .qm-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px 24px;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--charcoal);
+    color: var(--white);
+    border: 2px solid var(--charcoal);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+  .qm-submit:hover {
+    background: var(--asphalt);
+    color: var(--pop);
+    border-color: var(--asphalt);
+    transform: translateY(-1px);
+  }
+
+  /* Trust row */
+  .qm-trust {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+  .qm-trust.hidden { display: none; }
+  .qm-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: var(--gray);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  .qm-trust-item svg { color: var(--pop); flex-shrink: 0; }
+
+  /* Footer */
+  .qm-footer {
+    text-align: center;
+    font-size: 0.88rem;
+    color: var(--gray);
+    margin-top: 14px;
+  }
+  .qm-footer a {
+    color: var(--forest);
+    font-weight: 600;
+  }
+
+  /* Success */
+  .qm-success {
+    display: none;
+    text-align: center;
+    padding: 16px 0 8px;
+  }
+  .qm-success.show { display: block; }
+  .qm-success-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--pop);
+    color: var(--forest-dark);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .qm-success h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--charcoal);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .qm-success p {
+    color: var(--gray);
+    font-size: 0.98rem;
+    margin-bottom: 10px;
+  }
+  .qm-success a { color: var(--forest); font-weight: 600; }
+  .qm-success-hint { font-size: 0.9rem; }
+  .qm-done {
+    margin-top: 18px;
+    padding: 12px 28px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: var(--charcoal);
+    color: var(--white);
+    border: 2px solid var(--charcoal);
+    cursor: pointer;
+  }
+  .qm-done:hover { background: var(--asphalt); color: var(--pop); }
+
+  @media (max-width: 540px) {
+    .qm-panel {
+      padding: 58px 22px 24px;
+      box-shadow: 6px 6px 0 var(--forest);
+    }
+    .qm-row { grid-template-columns: 1fr; }
+    .qm-trust { grid-template-columns: 1fr; gap: 6px; }
+    .qm-promo { font-size: 0.68rem; gap: 8px; padding: 6px 12px; }
+  }
+</style>

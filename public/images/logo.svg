@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <defs>
+    <path id="topCurve" d="M 60 200 A 140 140 0 0 1 340 200" />
+    <path id="bottomCurve" d="M 90 230 A 120 120 0 0 0 310 230" />
+  </defs>
+  <!-- cream background circle -->
+  <circle cx="200" cy="200" r="190" fill="#F5F0E1" stroke="#2A4A2E" stroke-width="6"/>
+  <circle cx="200" cy="200" r="175" fill="none" stroke="#2A4A2E" stroke-width="2"/>
+  <!-- top text: FERNANDEZ'S -->
+  <text font-family="Georgia, 'Times New Roman', serif" font-size="36" font-weight="700" fill="#2A4A2E" letter-spacing="4">
+    <textPath href="#topCurve" startOffset="50%" text-anchor="middle">FERNANDEZ'S</textPath>
+  </text>
+  <!-- center fern/plant -->
+  <g transform="translate(200, 215)">
+    <!-- stem -->
+    <path d="M 0 40 Q 0 -20 0 -70" stroke="#2A4A2E" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <!-- left fronds -->
+    <path d="M 0 -70 Q -25 -60 -35 -45" stroke="#2A4A2E" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 0 -50 Q -28 -42 -40 -25" stroke="#2A4A2E" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 0 -30 Q -30 -22 -42 -5" stroke="#2A4A2E" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 0 -10 Q -30 -4 -40 12" stroke="#2A4A2E" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- right fronds -->
+    <path d="M 0 -70 Q 25 -60 35 -45" stroke="#2A4A2E" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 0 -50 Q 28 -42 40 -25" stroke="#2A4A2E" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 0 -30 Q 30 -22 42 -5" stroke="#2A4A2E" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 0 -10 Q 30 -4 40 12" stroke="#2A4A2E" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <!-- subtle leaves -->
+    <ellipse cx="-30" cy="-50" rx="8" ry="3" fill="#8BC34A" opacity="0.6" transform="rotate(-20 -30 -50)"/>
+    <ellipse cx="30" cy="-50" rx="8" ry="3" fill="#8BC34A" opacity="0.6" transform="rotate(20 30 -50)"/>
+    <ellipse cx="-35" cy="-20" rx="9" ry="3" fill="#8BC34A" opacity="0.6" transform="rotate(-15 -35 -20)"/>
+    <ellipse cx="35" cy="-20" rx="9" ry="3" fill="#8BC34A" opacity="0.6" transform="rotate(15 35 -20)"/>
+  </g>
+  <!-- grass silhouette at base -->
+  <path d="M 100 270 Q 110 258 120 270 Q 130 258 140 270 Q 150 258 160 270 Q 170 258 180 270 Q 190 258 200 270 Q 210 258 220 270 Q 230 258 240 270 Q 250 258 260 270 Q 270 258 280 270 Q 290 258 300 270 L 300 285 L 100 285 Z" fill="#C8D6B8" opacity="0.7"/>
+  <!-- bottom banner scroll -->
+  <path d="M 70 290 Q 200 320 330 290 L 330 335 Q 200 365 70 335 Z" fill="#2A4A2E"/>
+  <text x="200" y="322" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#F5F0E1" text-anchor="middle" letter-spacing="6">LANDSCAPING</text>
+</svg>

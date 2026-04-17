@@ -1,0 +1,199 @@
+---
+---
+<section class="hero">
+  <div class="hero-bg">
+    <img src="/images/yard-12.jpg" alt="Freshly mowed residential lawn in South Bend, IN by Fernandez's Landscaping" />
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="container hero-content">
+    <div class="hero-meta">
+      <span class="hero-tag">South Bend · IN</span>
+      <span class="hero-divider"></span>
+      <span class="hero-tag-sub">Est. 2025</span>
+    </div>
+    <h1>Hardest-Working<br/><span class="hero-accent">Lawn &amp; Landscape Crew</span><br/>In South Bend.</h1>
+    <p class="hero-sub">Family-run. Owner-operated. Same-day estimates — and we haul it all away.</p>
+    <div class="hero-stars" role="img" aria-label="100% customer satisfaction">
+      <span class="stars-glyphs" aria-hidden="true">★★★★★</span>
+      <span class="stars-text">100% Customer Satisfaction</span>
+    </div>
+    <div class="hero-cta">
+      <a href="tel:5743862740" class="btn btn-accent btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call (574) 386-2740
+      </a>
+      <a href="#quote" class="btn btn-ghost btn-lg" data-quote-open>Free Quote →</a>
+    </div>
+  </div>
+  <div class="hero-corner" aria-hidden="true">
+    <span class="corner-line">FERNANDEZ'S LANDSCAPING</span>
+    <span class="corner-dot">—</span>
+    <span class="corner-line">SOUTH BEND, IN 46628</span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 92vh;
+    display: flex;
+    align-items: center;
+    color: var(--bone);
+    overflow: hidden;
+    background: var(--asphalt);
+    /* flip --lime accents to bone on dark hero; keep --rust (pop-green) for the corner dot */
+    --lime: var(--bone);
+    --lime-dark: var(--white);
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+    filter: saturate(0.85) contrast(1.05);
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(18, 36, 27, 0.4) 0%, rgba(18, 22, 21, 0.78) 100%),
+      linear-gradient(90deg, rgba(18, 22, 21, 0.65) 0%, rgba(18, 22, 21, 0.2) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 140px 24px 110px;
+    max-width: 980px;
+  }
+  .hero-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 32px;
+    padding: 8px 16px;
+    border: 1px solid rgba(242, 238, 227, 0.22);
+    background: rgba(18, 22, 21, 0.45);
+    backdrop-filter: blur(8px);
+  }
+  .hero-tag, .hero-tag-sub {
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--lime);
+  }
+  .hero-tag-sub { color: rgba(242, 238, 227, 0.65); }
+  .hero-divider {
+    width: 24px;
+    height: 1px;
+    background: rgba(242, 238, 227, 0.35);
+  }
+  .hero h1 {
+    color: var(--bone);
+    font-weight: 700;
+    margin-bottom: 26px;
+    font-size: clamp(3rem, 7.4vw, 6rem);
+    letter-spacing: -0.02em;
+    line-height: 0.96;
+  }
+  .hero-accent {
+    color: var(--bone);
+    display: inline-block;
+    position: relative;
+    opacity: 0.72;
+    font-style: normal;
+  }
+  .hero-sub {
+    font-family: var(--font-sans);
+    font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+    color: rgba(242, 238, 227, 0.82);
+    max-width: 620px;
+    margin-bottom: 24px;
+    line-height: 1.55;
+    font-weight: 400;
+  }
+  .hero-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: rgba(13, 13, 13, 0.45);
+    border: 1px solid rgba(242, 238, 227, 0.18);
+    border-radius: 0;
+    margin-bottom: 36px;
+  }
+  .stars-glyphs {
+    color: #EAB308;
+    font-size: 1.05rem;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-shadow: 0 0 6px rgba(234, 179, 8, 0.35);
+  }
+  .stars-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: rgba(242, 238, 227, 0.8);
+  }
+  .hero-cta {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .hero-corner {
+    position: absolute;
+    bottom: 24px;
+    right: 32px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: rgba(242, 238, 227, 0.5);
+  }
+  .corner-dot { color: var(--rust); }
+
+  @media (max-width: 720px) {
+    .hero {
+      min-height: auto;
+      padding: 0;
+      text-align: center;
+    }
+    .hero-content {
+      padding: 108px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-meta { margin-inline: auto; }
+    .hero h1 {
+      font-size: clamp(2.6rem, 9vw, 3.6rem);
+    }
+    .hero-sub { margin-inline: auto; }
+    .hero-stars { margin-inline: auto; }
+    .hero-cta {
+      width: 100%;
+      max-width: 360px;
+      flex-direction: column;
+      gap: 12px;
+      margin-inline: auto;
+    }
+    .hero-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .hero-corner { display: none; }
+  }
+</style>

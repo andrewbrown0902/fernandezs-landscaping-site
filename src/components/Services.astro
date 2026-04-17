@@ -1,0 +1,180 @@
+---
+const services = [
+  {
+    title: 'Lawn Mowing & Edging',
+    desc: 'Clean lines, crisp edges, and that fresh-cut look every time. Weekly or one-time.',
+    image: '/images/yard-1.jpg',
+    keywords: 'Weekly service · One-time cuts',
+  },
+  {
+    title: 'Bush Trimming & Mulch',
+    desc: 'Shape the hedges, lay fresh mulch, instantly refresh your curb appeal.',
+    image: '/images/yard-6.jpg',
+    keywords: 'Hedges · Mulch install',
+  },
+  {
+    title: 'Tree Branch Cutting',
+    desc: 'We cut low-hanging or overgrown branches — and haul them away for free.',
+    image: '/images/yard-4.jpg',
+    keywords: 'Trimming · Haul-away',
+  },
+  {
+    title: 'Weed, Dirt & Rock Removal',
+    desc: 'Overgrown, messy, or just cluttered? We clear it out so you can start fresh.',
+    image: '/images/yard-8.jpg',
+    keywords: 'Cleanouts · Clearing',
+  },
+  {
+    title: 'Tree & Garden Planting',
+    desc: 'Thoughtful tree and garden installs that thrive in the South Bend climate.',
+    image: '/images/yard-3.jpg',
+    keywords: 'New trees · Gardens',
+  },
+  {
+    title: 'Seasonal Cleanups',
+    desc: 'Spring ramp-up, fall leaf haul, and everything between. One-time or recurring.',
+    image: '/images/yard-11.jpg',
+    keywords: 'Spring · Fall · Year-round',
+  },
+];
+---
+<section id="services" class="section">
+  <div class="container">
+    <div class="services-head">
+      <div class="head-top">
+        <span class="section-num">/ 01</span>
+        <span class="section-kicker">What We Do</span>
+      </div>
+      <h2 class="section-title">Full-Service Lawn Care<br/>&amp; Landscape Work.</h2>
+      <p class="section-lede">From weekly mowing to one-time cleanups — we handle the outdoor work so you don't have to. Free haul-away included on every job.</p>
+    </div>
+    <div class="services-grid">
+      {services.map((s, i) => (
+        <article class="service-card">
+          <div class="service-image">
+            <img src={s.image} alt={s.title} loading="lazy" />
+            <span class="service-index">{String(i + 1).padStart(2, '0')}</span>
+          </div>
+          <div class="service-body">
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+            <div class="service-tags">{s.keywords}</div>
+          </div>
+        </article>
+      ))}
+    </div>
+    <div class="services-cta">
+      <p>Need something not on this list?</p>
+      <a href="tel:5743862740" class="btn btn-outline">Call and ask — (574) 386-2740</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-head {
+    max-width: 760px;
+    margin-bottom: 64px;
+  }
+  .head-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .head-top .section-kicker { margin-bottom: 0; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--white);
+    border: 1.5px solid var(--charcoal);
+    border-radius: 0;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    position: relative;
+  }
+  .service-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0 var(--forest);
+  }
+  .service-image {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--bone);
+    position: relative;
+    border-bottom: 1.5px solid var(--charcoal);
+  }
+  .service-index {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--asphalt);
+    color: var(--pop);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    padding: 6px 12px;
+    z-index: 2;
+  }
+  .service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover .service-image img {
+    transform: scale(1.06);
+  }
+  .service-body {
+    padding: 24px;
+  }
+  .service-body h3 {
+    margin-bottom: 12px;
+    color: var(--charcoal);
+    font-size: 1.4rem;
+    letter-spacing: 0.01em;
+  }
+  .service-body p {
+    color: var(--gray);
+    font-size: 0.96rem;
+    margin-bottom: 18px;
+    line-height: 1.6;
+  }
+  .service-tags {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--rust);
+    padding-top: 16px;
+    border-top: 1.5px solid var(--charcoal);
+  }
+  .services-cta {
+    text-align: center;
+    margin-top: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .services-cta p {
+    font-size: 1.05rem;
+    color: var(--charcoal);
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .services-head { text-align: center; margin-bottom: 48px; }
+    .head-top { justify-content: center; }
+    .services-grid { grid-template-columns: 1fr; gap: 20px; }
+    .services-cta { margin-top: 44px; }
+    .services-cta .btn { width: 100%; max-width: 320px; justify-content: center; }
+  }
+</style>

@@ -1,0 +1,178 @@
+---
+---
+<section class="video-spotlight">
+  <div class="container">
+    <div class="vs-grid">
+      <div class="vs-copy">
+        <div class="head-top">
+          <span class="section-num">/ 04</span>
+          <span class="section-kicker">Watch Us Work</span>
+        </div>
+        <h2>The Work<br/>Speaks For Itself.</h2>
+        <p>Behind-the-scenes from recent jobs. New content to Facebook and TikTok every week — no fluff, just the work.</p>
+        <div class="vs-stats">
+          <div class="vs-stat">
+            <div class="vs-stat-num">Weekly</div>
+            <div class="vs-stat-label">New job footage posted</div>
+          </div>
+          <div class="vs-stat">
+            <div class="vs-stat-num">Real Jobs</div>
+            <div class="vs-stat-label">Every clip is a South Bend yard</div>
+          </div>
+        </div>
+        <div class="vs-cta">
+          <a href="https://www.facebook.com/people/Fernandezs-landscaping/61574590599260/" target="_blank" rel="noopener" class="btn btn-outline">Watch on Facebook</a>
+        </div>
+      </div>
+      <div class="vs-video">
+        <a href="https://www.facebook.com/people/Fernandezs-landscaping/61574590599260/" target="_blank" rel="noopener" class="vs-video-link" aria-label="Watch Fernandez's Landscaping reel on Facebook">
+          <img src="/images/yard-2.jpg" alt="Fernandez's Landscaping work reel" />
+          <div class="vs-play">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.5 5L19 12L8.5 19Z"/></svg>
+          </div>
+          <div class="vs-video-meta">
+            <span>📹 Latest Reel</span>
+            <span class="vs-views">Watch on FB</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .video-spotlight {
+    padding: 90px 0;
+    background: var(--forest);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+    --lime: var(--bone);
+    --lime-dark: var(--white);
+  }
+  .video-spotlight::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, rgba(139, 195, 74, 0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .vs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+  }
+  .head-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .head-top .section-kicker { margin-bottom: 0; color: var(--lime); }
+  .head-top .section-num { color: var(--rust); }
+  .vs-copy h2 {
+    color: var(--bone);
+    margin-bottom: 18px;
+  }
+  .vs-copy p {
+    color: rgba(245, 240, 225, 0.8);
+    font-size: 1.08rem;
+    margin-bottom: 32px;
+    line-height: 1.7;
+  }
+  .vs-stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 32px;
+    padding: 24px 0;
+    border-top: 1px solid rgba(245, 240, 225, 0.15);
+    border-bottom: 1px solid rgba(245, 240, 225, 0.15);
+  }
+  .vs-stat-num {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--lime);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .vs-stat-label {
+    font-size: 0.88rem;
+    color: rgba(245, 240, 225, 0.72);
+    margin-top: 6px;
+  }
+  .vs-video-link {
+    position: relative;
+    display: block;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 9 / 16;
+    max-height: 560px;
+    margin: 0 auto;
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease;
+  }
+  .vs-video-link:hover {
+    transform: translateY(-3px);
+  }
+  .vs-video-link img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .vs-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 84px;
+    height: 84px;
+    background: rgba(245, 240, 225, 0.95);
+    color: var(--forest);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .vs-video-link:hover .vs-play {
+    background: var(--lime);
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  .vs-video-meta {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--cream);
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 2;
+  }
+  .vs-video-meta::before {
+    content: '';
+    position: absolute;
+    inset: -40px -20px -20px -20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    z-index: -1;
+  }
+  .vs-views {
+    color: var(--lime);
+  }
+
+  @media (max-width: 880px) {
+    .vs-grid { grid-template-columns: 1fr; gap: 40px; }
+    .vs-video-link { max-height: 480px; max-width: 340px; }
+  }
+  @media (max-width: 640px) {
+    .video-spotlight { padding: 72px 0; }
+    .vs-copy { text-align: center; }
+    .head-top { justify-content: center; }
+    .vs-stats { justify-content: center; gap: 32px; }
+    .vs-cta .btn { width: 100%; max-width: 320px; justify-content: center; }
+  }
+</style>

@@ -1,0 +1,100 @@
+---
+const reasons = [
+  {
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+    title: 'You talk to Noah. Not a call center.',
+    desc: 'Owner picks up the phone. Owner shows up for the quote. Owner does the work. No middlemen, no runaround.',
+  },
+  {
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>`,
+    title: 'Fast, honest, fair.',
+    desc: 'Same-day estimates. Haul-away included. No hidden fees, no high-pressure upsells — just a fair price and good work.',
+  },
+  {
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+    title: 'We treat every yard like our own.',
+    desc: 'Quoted straight from a real customer — and we mean it. Your property, done right, every visit.',
+  },
+];
+---
+<section class="section section-alt">
+  <div class="container">
+    <div class="whyus-head">
+      <div class="head-top">
+        <span class="section-num">/ 02</span>
+        <span class="section-kicker">Why Fernandez's</span>
+      </div>
+      <h2 class="section-title">Show Up.<br/>Work Hard.<br/>Do It Right.</h2>
+    </div>
+    <div class="whyus-grid">
+      {reasons.map(r => (
+        <div class="whyus-item">
+          <div class="whyus-icon" set:html={r.icon}></div>
+          <h3>{r.title}</h3>
+          <p>{r.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .whyus-head {
+    max-width: 760px;
+    margin-bottom: 64px;
+  }
+  .head-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .head-top .section-kicker { margin-bottom: 0; }
+  .whyus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1.5px solid var(--charcoal);
+    border-left: 1.5px solid var(--charcoal);
+  }
+  .whyus-item {
+    padding: 40px 32px;
+    background: var(--white);
+    border-right: 1.5px solid var(--charcoal);
+    border-bottom: 1.5px solid var(--charcoal);
+    transition: background 0.2s ease;
+  }
+  .whyus-item:hover {
+    background: var(--bone);
+  }
+  .whyus-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: var(--forest);
+    color: var(--bone);
+    border-radius: 0;
+    margin-bottom: 24px;
+  }
+  .whyus-item h3 {
+    margin-bottom: 14px;
+    color: var(--charcoal);
+    letter-spacing: 0.005em;
+  }
+  .whyus-item p {
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  @media (max-width: 900px) {
+    .whyus-grid { grid-template-columns: 1fr; gap: 0; }
+  }
+  @media (max-width: 640px) {
+    .whyus-head { text-align: center; margin-bottom: 44px; }
+    .head-top { justify-content: center; }
+    .whyus-item { padding: 32px 24px; text-align: center; }
+    .whyus-icon { margin-inline: auto; }
+  }
+</style>

@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = "Fernandez's Landscaping | Lawn Care & Landscaping in South Bend, IN",
+  description = "South Bend's owner-operated lawn care and landscaping team. Free same-day estimates. Mowing, trimming, mulch, tree work, and full seasonal cleanups. Call (574) 386-2740.",
+  canonical = 'https://fernandezs-landscaping.pages.dev/',
+} = Astro.props;
+
+const schemaLocalBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'LandscapingBusiness',
+  name: "Fernandez's Landscaping",
+  description,
+  image: `${canonical}images/hero-lawn.jpg`,
+  telephone: '+1-574-386-2740',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'South Bend',
+    addressRegion: 'IN',
+    postalCode: '46628',
+    addressCountry: 'US',
+  },
+  areaServed: [
+    'South Bend, IN',
+    'Mishawaka, IN',
+    'Granger, IN',
+    'Elkhart, IN',
+    'Goshen, IN',
+    'Niles, MI',
+    'Plymouth, IN',
+    'La Porte, IN',
+  ],
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday'], opens: '08:00', closes: '18:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Wednesday', 'Thursday'], opens: '08:00', closes: '17:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Friday', opens: '08:00', closes: '16:00' },
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '08:00', closes: '15:30' },
+  ],
+  sameAs: [
+    'https://www.facebook.com/people/Fernandezs-landscaping/61574590599260/',
+    'https://www.yelp.com/biz/fernandez-landscaping-south-bend',
+  ],
+};
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/jpeg" href="/images/logo.jpeg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={`${canonical}images/hero-lawn.jpg`} />
+
+    <!-- Preconnect + fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet" />
+
+    <title>{title}</title>
+
+    <script type="application/ld+json" set:html={JSON.stringify(schemaLocalBusiness)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

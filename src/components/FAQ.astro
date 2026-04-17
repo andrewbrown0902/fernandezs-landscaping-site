@@ -1,0 +1,167 @@
+---
+const faqs = [
+  {
+    q: 'How much does lawn mowing cost in South Bend?',
+    a: "Pricing depends on lot size, grass height, and whether we're doing a one-time cut or recurring service. Most standard residential yards in the South Bend area fall into a predictable range — give us a quick call or request a free quote and we'll get you an honest number the same day.",
+  },
+  {
+    q: 'Do you offer free estimates?',
+    a: 'Yes — always. Free estimates, no commitment. We can often quote right over the phone or stop by in person if the yard is a bigger job.',
+  },
+  {
+    q: 'What areas do you serve around South Bend?',
+    a: 'We cover South Bend, Mishawaka, Granger, Osceola, Elkhart, Goshen, Plymouth, La Porte, and nearby Michigan communities like Niles and Buchanan — basically anywhere within about 30 miles of South Bend.',
+  },
+  {
+    q: 'Do you haul away grass, branches, and debris?',
+    a: 'Yes. Haul-away is included in our services at no extra charge. If we cut it, trim it, pull it, or rake it — we take it with us.',
+  },
+  {
+    q: 'How fast can you come out for a quote?',
+    a: "Usually the same day, especially during peak season (April through October). Give us a call in the morning and we'll try to get eyes on your property by afternoon.",
+  },
+  {
+    q: 'Can you handle one-time cleanups, or only regular mowing?',
+    a: "Both. We do weekly and bi-weekly recurring maintenance, one-time spring and fall cleanups, and everything in between — including overgrown yards that have gotten out of hand.",
+  },
+  {
+    q: 'Do you work on bigger properties or just small residential yards?',
+    a: "We've handled everything from small city lots to half-acre-plus properties. If the job is big, we'll plan it out up front so there are no surprises on price or timing.",
+  },
+];
+---
+<section id="faq" class="section section-alt">
+  <div class="container-narrow">
+    <div class="faq-head text-center">
+      <div class="head-top" style="justify-content: center;">
+        <span class="section-num">/ 08</span>
+        <span class="section-kicker">Common Questions</span>
+      </div>
+      <h2 class="section-title">Answers,<br/>Before You Call.</h2>
+    </div>
+    <div class="faq-list">
+      {faqs.map((f, i) => (
+        <details class="faq-item" open={i === 0}>
+          <summary>
+            <span>{f.q}</span>
+            <span class="faq-toggle" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </summary>
+          <div class="faq-answer">
+            <p>{f.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" is:inline>
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does lawn mowing cost in South Bend?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Pricing depends on lot size, grass height, and whether it's one-time or recurring. Most residential yards in South Bend fall into a predictable range — request a free quote for an honest number the same day." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer free estimates?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — always. Free estimates, no commitment. We can quote over the phone or in person for bigger jobs." }
+    },
+    {
+      "@type": "Question",
+      "name": "What areas do you serve around South Bend?",
+      "acceptedAnswer": { "@type": "Answer", "text": "South Bend, Mishawaka, Granger, Osceola, Elkhart, Goshen, Plymouth, La Porte, and nearby Michigan communities — roughly a 30-mile radius." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you haul away grass, branches, and debris?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Haul-away is included at no extra charge on every job." }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast can you come out for a quote?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Usually same-day during peak season. Call in the morning and we'll typically reach your property by afternoon." }
+    }
+  ]
+}
+</script>
+
+<style>
+  .faq-head { margin-bottom: 48px; }
+  .head-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .head-top .section-kicker { margin-bottom: 0; }
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1.5px solid var(--charcoal);
+  }
+  .faq-item {
+    background: var(--white);
+    border: 0;
+    border-bottom: 1.5px solid var(--charcoal);
+    border-radius: 0;
+    overflow: hidden;
+    transition: background 0.15s ease;
+  }
+  .faq-item[open] {
+    background: var(--bone);
+  }
+  .faq-item summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 24px;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--charcoal);
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover { color: var(--forest); }
+  .faq-toggle {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--charcoal);
+    color: var(--bone);
+    border-radius: 0;
+    transition: transform 0.25s ease, background 0.2s ease;
+  }
+  .faq-item[open] .faq-toggle {
+    transform: rotate(45deg);
+    background: var(--pop);
+    color: var(--forest-dark);
+  }
+  .faq-answer {
+    padding: 0 28px 24px;
+  }
+  .faq-answer p {
+    color: var(--gray);
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+  @media (max-width: 640px) {
+    .faq-item summary { padding: 18px 18px; font-size: 1rem; gap: 12px; }
+    .faq-answer { padding: 0 18px 20px; }
+    .faq-answer p { font-size: 0.96rem; }
+  }
+</style>

@@ -1,0 +1,90 @@
+---
+const photos = [
+  { src: '/images/yard-1.jpg', alt: 'Freshly mowed front lawn with clean edges — South Bend' },
+  { src: '/images/yard-2.jpg', alt: 'Residential lawn striping after mowing — South Bend' },
+  { src: '/images/yard-3.jpg', alt: 'Mature tree and trimmed grass — South Bend landscaping' },
+  { src: '/images/yard-4.jpg', alt: 'Side yard cleanup in South Bend' },
+  { src: '/images/yard-5.jpg', alt: 'Front yard with clean mowing lines' },
+  { src: '/images/yard-6.jpg', alt: 'Bush trimming and mulch detail' },
+  { src: '/images/yard-7.jpg', alt: 'Backyard lawn care in South Bend' },
+  { src: '/images/yard-8.jpg', alt: 'Driveway and lawn edging' },
+  { src: '/images/yard-9.jpg', alt: 'Front walkway landscaping' },
+  { src: '/images/yard-10.jpg', alt: 'Trimmed hedges and curb detail' },
+  { src: '/images/yard-11.jpg', alt: 'Full yard care and cleanup' },
+  { src: '/images/yard-12.jpg', alt: 'Neat residential lawn' },
+];
+---
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="gallery-head">
+      <div class="head-top">
+        <span class="section-num">/ 03</span>
+        <span class="section-kicker">Recent Work</span>
+      </div>
+      <h2 class="section-title">Real Yards.<br/>Real Results.</h2>
+      <p class="section-lede">Photos from recent South Bend jobs. No stock, no filters — just clean lines and homeowners who stopped worrying about their lawn.</p>
+    </div>
+    <div class="gallery-grid">
+      {photos.map(p => (
+        <figure class="gallery-item">
+          <img src={p.src} alt={p.alt} loading="lazy" />
+        </figure>
+      ))}
+    </div>
+    <div class="gallery-cta">
+      <a href="https://www.facebook.com/people/Fernandezs-landscaping/61574590599260/" target="_blank" rel="noopener" class="btn btn-outline">See more on Facebook →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery-head {
+    max-width: 760px;
+    margin-bottom: 56px;
+  }
+  .head-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .head-top .section-kicker { margin-bottom: 0; }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .gallery-item {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 0;
+    background: var(--bone);
+    border: 1.5px solid var(--charcoal);
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .gallery-item:hover img {
+    transform: scale(1.05);
+  }
+  .gallery-cta {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 800px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  }
+  @media (max-width: 640px) {
+    .gallery-head { text-align: center; }
+    .head-top { justify-content: center; }
+    .section-lede { margin-inline: auto; }
+  }
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
+</style>

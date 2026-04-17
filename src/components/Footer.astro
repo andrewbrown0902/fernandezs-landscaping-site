@@ -1,0 +1,150 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo-row">
+          <img src="/images/logo.jpeg" alt="Fernandez's Landscaping" class="footer-logo" width="60" height="60" />
+          <div>
+            <div class="footer-brand-name">Fernandez's Landscaping</div>
+            <div class="footer-brand-tag">Outdoor care, done right — South Bend, IN</div>
+          </div>
+        </div>
+        <p class="footer-desc">Family-run, owner-operated lawn care and landscaping serving South Bend and the greater Michiana area. Free estimates, fair prices, work we stand behind.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:5743862740">📞 (574) 386-2740</a></li>
+          <li>📍 South Bend, IN 46628</li>
+          <li><a href="#quote">✉️ Request a free quote</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Hours</h4>
+        <ul>
+          <li><span>Mon–Tue</span> <span>8 AM – 6 PM</span></li>
+          <li><span>Wed–Thu</span> <span>8 AM – 5 PM</span></li>
+          <li><span>Fri</span> <span>8 AM – 4 PM</span></li>
+          <li><span>Sat</span> <span>8 AM – 3:30 PM</span></li>
+          <li><span>Sun</span> <span>Closed</span></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Find Us</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/people/Fernandezs-landscaping/61574590599260/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.yelp.com/biz/fernandez-landscaping-south-bend" target="_blank" rel="noopener">Yelp</a></li>
+          <li><a href="https://www.tiktok.com/@mlb0o0o0" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© {year} Fernandez's Landscaping · South Bend, IN</div>
+      <div>Site by <a href="#" style="color: var(--bone); font-weight: 600;">Black &amp; White Digital</a></div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--forest-dark);
+    color: rgba(245, 240, 225, 0.75);
+    padding: 72px 0 24px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(245, 240, 225, 0.12);
+  }
+  .footer-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .footer-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    clip-path: ellipse(46% 49% at 50% 50%);
+  }
+  .footer-brand-name {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--bone);
+  }
+  .footer-brand-tag {
+    font-size: 0.85rem;
+    color: rgba(245, 240, 225, 0.6);
+    margin-top: 2px;
+  }
+  .footer-desc {
+    color: rgba(245, 240, 225, 0.7);
+    font-size: 0.94rem;
+    line-height: 1.65;
+    max-width: 380px;
+  }
+  .footer-col h4 {
+    color: var(--bone);
+    font-family: var(--font-display);
+    font-size: 0.96rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(242, 238, 227, 0.18);
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-col li {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 0.94rem;
+    color: rgba(245, 240, 225, 0.72);
+  }
+  .footer-col a {
+    color: rgba(245, 240, 225, 0.78);
+  }
+  .footer-col a:hover {
+    color: var(--lime);
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+    font-size: 0.85rem;
+    color: rgba(245, 240, 225, 0.5);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @media (max-width: 880px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
+  }
+  @media (max-width: 540px) {
+    .site-footer { padding: 56px 0 24px; text-align: center; }
+    .footer-grid { grid-template-columns: 1fr; gap: 36px; padding-bottom: 36px; }
+    .footer-logo-row { justify-content: center; }
+    .footer-desc { margin-inline: auto; }
+    .footer-col ul { align-items: center; }
+    .footer-col li { justify-content: center; }
+    .footer-bottom { justify-content: center; text-align: center; }
+  }
+</style>
