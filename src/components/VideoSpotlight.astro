@@ -1,4 +1,5 @@
 ---
+import SectionDivider from './SectionDivider.astro';
 ---
 <section class="video-spotlight">
   <div class="container">
@@ -21,7 +22,7 @@
           </div>
         </div>
         <div class="vs-cta">
-          <a href="https://www.facebook.com/people/Fernandezs-landscaping/61574590599260/" target="_blank" rel="noopener" class="btn btn-outline">Watch on Facebook</a>
+          <a href="https://www.facebook.com/people/Fernandezs-landscaping/61574590599260/" target="_blank" rel="noopener" class="btn btn-ghost">Watch on Facebook</a>
         </div>
       </div>
       <div class="vs-video">
@@ -38,6 +39,7 @@
       </div>
     </div>
   </div>
+  <SectionDivider variant="dark" />
 </section>
 
 <style>
@@ -49,13 +51,7 @@
     overflow: hidden;
     --lime: var(--bone);
     --lime-dark: var(--white);
-  }
-  .video-spotlight::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at top right, rgba(139, 195, 74, 0.12) 0%, transparent 60%);
-    pointer-events: none;
+    --rust: var(--bone);
   }
   .vs-grid {
     display: grid;

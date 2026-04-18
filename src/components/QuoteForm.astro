@@ -1,4 +1,5 @@
 ---
+import SectionDivider from './SectionDivider.astro';
 const services = [
   'Lawn mowing & edging',
   'Bush trimming & mulch',
@@ -61,6 +62,7 @@ const services = [
       </div>
     </form>
   </div>
+  <SectionDivider variant="dark" />
 </section>
 
 <style>
@@ -141,7 +143,7 @@ const services = [
   }
   .quote-submit:hover {
     background: var(--asphalt);
-    color: var(--pop);
+    color: var(--bone);
     border-color: var(--asphalt);
   }
   .quote-alt {

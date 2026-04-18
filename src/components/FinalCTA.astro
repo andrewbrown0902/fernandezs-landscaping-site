@@ -1,4 +1,5 @@
 ---
+import SectionDivider from './SectionDivider.astro';
 ---
 <section class="final-cta">
   <div class="container">
@@ -18,6 +19,7 @@
       </div>
     </div>
   </div>
+  <SectionDivider variant="dark" />
 </section>
 
 <style>
@@ -29,16 +31,7 @@
     overflow: hidden;
     --lime: var(--bone);
     --lime-dark: var(--white);
-  }
-  .final-cta::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    right: -80px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(242, 238, 227, 0.12), transparent 70%);
-    pointer-events: none;
+    --rust: var(--bone);
   }
   .final-cta-inner {
     position: relative;

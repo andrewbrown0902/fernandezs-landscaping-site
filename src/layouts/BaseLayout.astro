@@ -77,5 +77,23 @@ const schemaLocalBusiness = {
   </head>
   <body>
     <slot />
+    <script is:inline>
+      (function () {
+        var targets = document.querySelectorAll('.reveal, .reveal-num, .reveal-zoom, .section-title, .section-num, .section-kicker, .gallery-item');
+        if (!('IntersectionObserver' in window)) {
+          targets.forEach(function (el) { el.classList.add('in'); });
+          return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+        targets.forEach(function (el) { io.observe(el); });
+      })();
+    </script>
   </body>
 </html>

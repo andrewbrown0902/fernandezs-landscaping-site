@@ -6,10 +6,13 @@
   /* Minimal palette — forest is THE main accent. One pop-green for small moments. */
   --lime: #1F3A23;        /* was lime; now forest (primary accent on light sections) */
   --lime-dark: #12241B;   /* was lime-dark; now forest-dark */
-  --rust: #1CBD52;        /* was rust; now pop-green for section numbers, tags, small accents */
-  --pop: #1CBD52;         /* explicit name for the pop green */
+  --rust: #0D0D0D;        /* pure black — small accents, section numbers */
+  --pop: #0D0D0D;         /* primary accent for CTAs and pop moments */
   --bone: #F2EEE3;
   --bone-dark: #E4DFCF;
+  --sage: #9BAE95;
+  --sage-light: #C0CDBB;
+  --sage-dark: #7A8F76;
   --steel: #2B2D2C;
   --asphalt: #0D0D0D;
   --soil: #6B4C2F;
@@ -57,12 +60,12 @@ body {
 
 ::selection {
   background: var(--pop);
-  color: var(--forest-dark);
+  color: var(--bone);
   text-shadow: none;
 }
 ::-moz-selection {
   background: var(--pop);
-  color: var(--forest-dark);
+  color: var(--bone);
   text-shadow: none;
 }
 
@@ -106,52 +109,46 @@ img { max-width: 100%; height: auto; display: block; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 16px 30px;
+  padding: 16px 32px;
   font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-radius: var(--radius);
+  letter-spacing: 0.06em;
+  border-radius: 999px;
   border: 2px solid transparent;
   cursor: pointer;
-  transition: all 0.18s ease;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
   white-space: nowrap;
   text-decoration: none;
 }
-.btn-primary {
-  background: var(--forest);
-  color: var(--cream);
-  border-color: var(--forest);
-}
-.btn-primary:hover {
-  background: var(--forest-dark);
-  color: var(--cream);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-/* Primary CTA = pop green. Same treatment on light & dark sections. */
+/* Primary CTA — pill fill with --pop, works on light or dark sections */
 .btn-accent {
   background: var(--pop);
-  color: var(--forest-dark);
+  color: var(--bone);
   border-color: var(--pop);
 }
 .btn-accent:hover {
-  background: var(--forest-dark);
+  background: var(--bone);
   color: var(--pop);
-  border-color: var(--forest-dark);
+  border-color: var(--bone);
   transform: translateY(-1px);
   box-shadow: var(--shadow-md);
 }
+/* Secondary on dark backgrounds — cream outline, faint translucent fill */
 .btn-ghost {
-  background: transparent;
-  color: var(--cream);
-  border-color: var(--cream);
+  background: rgba(242, 238, 227, 0.08);
+  color: var(--bone);
+  border-color: rgba(242, 238, 227, 0.65);
+  backdrop-filter: blur(8px);
 }
 .btn-ghost:hover {
-  background: var(--cream);
+  background: var(--bone);
   color: var(--forest-dark);
+  border-color: var(--bone);
+  backdrop-filter: none;
 }
+/* Secondary on light backgrounds — forest outline */
 .btn-outline {
   background: transparent;
   color: var(--forest);
@@ -159,10 +156,10 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .btn-outline:hover {
   background: var(--forest);
-  color: var(--cream);
+  color: var(--bone);
 }
 .btn-lg {
-  padding: 18px 36px;
+  padding: 18px 38px;
   font-size: 1.1rem;
 }
 
@@ -175,10 +172,10 @@ img { max-width: 100%; height: auto; display: block; }
 .section-dark {
   background: var(--forest);
   color: var(--cream);
-  /* On dark backgrounds, flip --lime to bone for section kickers etc.
-     --rust (pop-green) stays green — contrasts fine on forest. */
+  /* On dark backgrounds, flip accents to bone so they stay visible. */
   --lime: var(--bone);
   --lime-dark: var(--white);
+  --rust: var(--bone);
 }
 .section-dark h2, .section-dark h3 { color: var(--cream); }
 .section-dark p { color: rgba(245, 240, 225, 0.85); }
@@ -227,4 +224,86 @@ img { max-width: 100%; height: auto; display: block; }
 
 @media (max-width: 768px) {
   .section { padding: 60px 0; }
+}
+
+/* Trim bottom padding when a section ends with a divider */
+section:has(.section-divider) { padding-bottom: 32px; }
+@media (max-width: 640px) {
+  section:has(.section-divider) { padding-bottom: 24px; }
+}
+
+/* ===== Scroll reveal animations ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+
+.reveal-num {
+  opacity: 0;
+  transform: translateX(-14px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  will-change: opacity, transform;
+}
+.reveal-num.in {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal-zoom {
+  overflow: hidden;
+}
+.reveal-zoom img {
+  transform: scale(1.08);
+  transition: transform 1.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+.reveal-zoom.in img {
+  transform: scale(1);
+}
+
+/* Auto-reveal for common section elements */
+.section-title {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.75s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.section-title.in { opacity: 1; transform: none; }
+
+.section-num,
+.section-kicker {
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  will-change: opacity, transform;
+}
+.section-num.in,
+.section-kicker.in { opacity: 1; transform: none; }
+.section-kicker { transition-delay: 0.06s; }
+
+.gallery-item { overflow: hidden; }
+.gallery-item img {
+  transform: scale(1.08);
+  transition: transform 1.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+.gallery-item.in img { transform: scale(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-num, .section-title, .section-num, .section-kicker {
+    opacity: 1 !important; transform: none !important; transition: none !important;
+  }
+  .reveal-zoom img, .gallery-item img { transform: none !important; transition: none !important; }
 }

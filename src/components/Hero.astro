@@ -25,11 +25,6 @@
       <a href="#quote" class="btn btn-ghost btn-lg" data-quote-open>Free Quote →</a>
     </div>
   </div>
-  <div class="hero-corner" aria-hidden="true">
-    <span class="corner-line">FERNANDEZ'S LANDSCAPING</span>
-    <span class="corner-dot">—</span>
-    <span class="corner-line">SOUTH BEND, IN 46628</span>
-  </div>
 </section>
 
 <style>
@@ -55,14 +50,13 @@
     height: 100%;
     object-fit: cover;
     object-position: center 40%;
-    filter: saturate(0.85) contrast(1.05);
   }
   .hero-overlay {
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(18, 36, 27, 0.4) 0%, rgba(18, 22, 21, 0.78) 100%),
-      linear-gradient(90deg, rgba(18, 22, 21, 0.65) 0%, rgba(18, 22, 21, 0.2) 100%);
+      linear-gradient(180deg, rgba(18, 36, 27, 0.3) 0%, rgba(18, 36, 27, 0.6) 100%),
+      linear-gradient(90deg, rgba(18, 36, 27, 0.55) 0%, rgba(18, 36, 27, 0.1) 100%);
   }
   .hero-content {
     position: relative;
@@ -74,25 +68,27 @@
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    margin-bottom: 32px;
-    padding: 8px 16px;
-    border: 1px solid rgba(242, 238, 227, 0.22);
-    background: rgba(18, 22, 21, 0.45);
+    margin-bottom: 28px;
+    padding: 7px 18px;
+    background: rgba(242, 238, 227, 0.1);
+    border: 1px solid rgba(242, 238, 227, 0.3);
+    border-radius: 999px;
     backdrop-filter: blur(8px);
   }
   .hero-tag, .hero-tag-sub {
-    font-family: var(--font-mono);
-    font-size: 0.76rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    color: var(--lime);
+    font-family: var(--font-serif);
+    font-size: 1.02rem;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0;
+    color: var(--bone);
+    text-transform: none;
   }
-  .hero-tag-sub { color: rgba(242, 238, 227, 0.65); }
+  .hero-tag-sub { color: rgba(242, 238, 227, 0.78); }
   .hero-divider {
     width: 24px;
     height: 1px;
-    background: rgba(242, 238, 227, 0.35);
+    background: rgba(242, 238, 227, 0.45);
   }
   .hero h1 {
     color: var(--bone);
@@ -106,7 +102,6 @@
     color: var(--bone);
     display: inline-block;
     position: relative;
-    opacity: 0.72;
     font-style: normal;
   }
   .hero-sub {
@@ -122,48 +117,32 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 10px 16px;
-    background: rgba(13, 13, 13, 0.45);
-    border: 1px solid rgba(242, 238, 227, 0.18);
-    border-radius: 0;
     margin-bottom: 36px;
+    padding: 8px 20px;
+    background: rgba(242, 238, 227, 0.1);
+    border: 1px solid rgba(242, 238, 227, 0.3);
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
   }
   .stars-glyphs {
     color: #EAB308;
     font-size: 1.05rem;
     letter-spacing: 2px;
     line-height: 1;
-    text-shadow: 0 0 6px rgba(234, 179, 8, 0.35);
+    text-shadow: 0 0 6px rgba(234, 179, 8, 0.4);
   }
   .stars-text {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: rgba(242, 238, 227, 0.8);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    color: rgba(242, 238, 227, 0.88);
   }
   .hero-cta {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
   }
-
-  .hero-corner {
-    position: absolute;
-    bottom: 24px;
-    right: 32px;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    color: rgba(242, 238, 227, 0.5);
-  }
-  .corner-dot { color: var(--rust); }
 
   @media (max-width: 720px) {
     .hero {
@@ -194,6 +173,5 @@
       width: 100%;
       justify-content: center;
     }
-    .hero-corner { display: none; }
   }
 </style>

@@ -1,4 +1,5 @@
 ---
+import SectionDivider from './SectionDivider.astro';
 const faqs = [
   {
     q: 'How much does lawn mowing cost in South Bend?',
@@ -55,6 +56,7 @@ const faqs = [
       ))}
     </div>
   </div>
+  <SectionDivider />
 </section>
 
 <script type="application/ld+json" is:inline>
@@ -149,7 +151,7 @@ const faqs = [
   .faq-item[open] .faq-toggle {
     transform: rotate(45deg);
     background: var(--pop);
-    color: var(--forest-dark);
+    color: var(--bone);
   }
   .faq-answer {
     padding: 0 28px 24px;

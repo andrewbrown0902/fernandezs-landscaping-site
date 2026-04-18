@@ -39,6 +39,9 @@
     border-bottom: 1px solid rgba(242, 238, 227, 0.1);
     position: relative;
     z-index: 101;
+    /* on forest bg, the black --pop/--rust are invisible — flip to bone */
+    --pop: var(--bone);
+    --rust: var(--bone);
   }
   .tb-inner {
     display: flex;
