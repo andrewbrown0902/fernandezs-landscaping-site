@@ -1,6 +1,6 @@
 ---
 ---
-<div class="mobile-call-bar">
+<div class="mobile-call-bar" id="mobile-call-bar">
   <a href="sms:5743862740" class="mcb-btn mcb-text">
     <span class="mcb-emoji" aria-hidden="true">💬</span>
     Text Us
@@ -22,6 +22,13 @@
     gap: 10px;
     z-index: 90;
     pointer-events: none;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .mobile-call-bar.is-visible {
+    opacity: 1;
+    transform: none;
   }
   .mcb-btn {
     flex: 1;
@@ -67,3 +74,24 @@
     body { padding-bottom: 88px; }
   }
 </style>
+
+<script is:inline>
+  (function () {
+    var bar = document.getElementById('mobile-call-bar');
+    var trigger = document.getElementById('services');
+    if (!bar || !trigger) return;
+    if (!('IntersectionObserver' in window)) {
+      bar.classList.add('is-visible');
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          bar.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -15% 0px' });
+    io.observe(trigger);
+  })();
+</script>
